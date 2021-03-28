@@ -1,0 +1,28 @@
+<mat-card style="margin-top:20px;">
+    <mat-card-content>
+        <div class="first-section">
+            <h1>Your Location</h1>
+            <mat-card>
+                <app-info-presentation *ngIf="localName" [name]="localName" [cityName]="localCityName">
+                </app-info-presentation>
+            </mat-card>
+        </div>
+        <div class="second-section">
+            <h1>Chosen Location</h1>
+            <mat-card>
+                <app-info-presentation [name]="name" [cityName]="cityName"></app-info-presentation>
+            </mat-card>
+        </div>
+    </mat-card-content>
+</mat-card>
+
+<mat-card style="margin:20px auto;" *ngIf="forecasts && arrayOfDates.length > 0">
+    <mat-card-title>
+        <h1 style="text-align: center;">Weather for the next {{arrayOfDates.length}} days in
+            <strong>{{cityName}}</strong>
+        </h1>
+    </mat-card-title>
+    <mat-card-content>
+        <app-day-forecast *ngFor="let date of arrayOfDates" [weather]="getForecast()" [data]="date"></app-day-forecast>
+    </mat-card-content>
+</mat-card>

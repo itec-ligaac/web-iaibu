@@ -1,0 +1,14 @@
+<mat-card *ngIf="weather" style="margin:10px">
+    <div class="title-icon">
+        <h2>Weather</h2>
+        <img [src]="weather.condition.icon" [alt]="weather.condition.text">
+        <h3>{{data}}</h3>
+    </div>
+    <div class="condition-current">
+        <h3>Condition: will be {{weather.condition.text}} in that day</h3>
+    </div>
+    <div class="degrees-current">
+        <h3>Max Temp will be: {{weather.maxtemp_c}}°C</h3>
+        <h3>Min Temp will be: {{weather.mintemp_c}}°C</h3>
+    </div>
+</mat-card>

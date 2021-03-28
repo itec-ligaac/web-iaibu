@@ -1,0 +1,58 @@
+<mat-card style="margin-bottom: 20px;">
+    <mat-card-content style="text-align: center;">
+        <strong>Time: {{time}}</strong> / <strong>{{degrees}}°C</strong>
+    </mat-card-content>
+</mat-card>
+
+<mat-card style="text-align: center;">
+    <mat-card-title>
+        Cauta acum locatia de odihna!
+    </mat-card-title>
+    <mat-card-content>
+        <form #form="ngForm" (ngSubmit)="submit(form)">
+            <mat-form-field appearance="fill">
+                <mat-label>Perioada</mat-label>
+                <mat-date-range-input [rangePicker]="rangePicker">
+                    <input matStartDate placeholder="Start date" name="from" ngModel>
+                    <input matEndDate placeholder="End date" name="until" ngModel>
+                </mat-date-range-input>
+                <mat-datepicker-toggle matSuffix [for]="rangePicker"></mat-datepicker-toggle>
+                <mat-date-range-picker #rangePicker>
+                    <mat-date-range-picker-actions>
+                        <button mat-button matDateRangePickerCancel>Cancel</button>
+                        <button mat-raised-button color="primary" matDateRangePickerApply>Apply</button>
+                    </mat-date-range-picker-actions>
+                </mat-date-range-picker>
+            </mat-form-field>
+
+
+            <mat-form-field>
+                <mat-label>Countries</mat-label>
+                <input type="text" placeholder="Pick one" matInput name="country" ngModel [matAutocomplete]="auto"
+                    required (input)="filterCountries($event)" (input)="populateCities($event)"
+                    (click)="populateCities($event)">
+                <mat-autocomplete #auto="matAutocomplete">
+                    <mat-option *ngFor="let country of filteredCountries" [value]="country">
+                        {{country}}
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Cities</mat-label>
+                <input type="text" placeholder="Pick one" matInput name="city" ngModel [matAutocomplete]="autoCity"
+                    required (input)="filterCities($event)">
+                <mat-autocomplete #autoCity="matAutocomplete">
+                    <mat-option *ngFor="let city of filteredCities" [value]="city">
+                        {{city}}
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+
+            <button [disabled]="!form.valid" mat-raised-button color="primary" type="submit">Submit</button>
+        </form>
+    </mat-card-content>
+</mat-card>
+
+
+<app-recomendations></app-recomendations>

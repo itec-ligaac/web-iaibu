@@ -1,0 +1,11 @@
+<div class="title-icon">
+    <h2>Weather</h2>
+    <img [src]="weather.current.condition.icon" [alt]="weather.current.condition.text">
+</div>
+<div class="condition-current">
+    <h3>Condition: it is {{weather.current.condition.text}} currently</h3>
+</div>
+<div class="degrees-current">
+    <h3>Degrees: {{weather.current.temp_c}}°C</h3>
+    <h3>Feels like: {{weather.current.feelslike_c}}°C</h3>
+</div>

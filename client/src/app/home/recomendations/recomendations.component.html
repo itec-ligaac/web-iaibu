@@ -1,0 +1,13 @@
+<mat-card style="margin-top:30px;">
+    <mat-card-title style="text-align: center;">
+        Recomandation top countries to go by vaccinations status
+    </mat-card-title>
+    <mat-card-content style="display: flex; flex-flow: row wrap; margin: 30px;">
+        <mat-card *ngFor="let country of countries" style="width: 150px; margin: 10px;">
+            <mat-card-title>{{country.country}}</mat-card-title>
+            <mat-card-content>People vaccinated: {{country.data[country.data.length -1
+                ].total_vaccinations_per_hundred}}%
+            </mat-card-content>
+        </mat-card>
+    </mat-card-content>
+</mat-card>
