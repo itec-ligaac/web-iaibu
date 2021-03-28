@@ -1,0 +1,21 @@
+<div class="country-info">
+    <img *ngIf="flagCountryUrl" [src]="flagCountryUrl" [alt]="country?.name">
+    <h1>{{country?.name}}</h1>
+</div>
+<h3> Current City:
+    <strong>{{cityName}}</strong>
+</h3>
+<div class="covid-status">
+    <h2>Covid Status:</h2>
+    <h3 *ngIf="country?.countryData?.total_vaccinations_per_hundred > 0">
+        {{country?.countryData?.total_vaccinations_per_hundred}}% people vaccinated per hundred
+        people
+    </h3>
+    <ng-container *ngIf="country?.countryData?.total_vaccinations_per_hundred === 0.00">
+        <h3>This country has no data for the amount of total vaccinations yet...</h3>
+    </ng-container>
+</div>
+
+<div class="weahterSection ">
+    <app-weather *ngIf="weather" [weather]="weather"></app-weather>
+</div>

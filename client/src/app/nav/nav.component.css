@@ -1,0 +1,6 @@
+.alignment {
+  display: flex;
+  flex-flow: wrap;
+  justify-content: space-between;
+  width: 100%;
+}
